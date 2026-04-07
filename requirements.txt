@@ -9,6 +9,7 @@ tiktoken>=0.7.0
 
 # Vector DB
 chromadb>=0.5.0
+numpy<2.0  # chromadb uses np.float_ which was removed in NumPy 2.0
 
 # Config
 python-dotenv>=1.0.0
