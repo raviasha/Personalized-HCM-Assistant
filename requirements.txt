@@ -1,0 +1,20 @@
+# Core UI - exact versions required (gradio_client has a bool-schema bug in newer versions)
+gradio==4.44.1
+huggingface-hub==0.24.7
+starlette<1.0
+
+# LLM + embeddings
+openai>=1.40.0
+tiktoken>=0.7.0
+
+# Vector DB
+chromadb>=0.5.0
+
+# Config
+python-dotenv>=1.0.0
+
+# Persistence (Step 7)
+# Pin to 2.3.x: newer releases pull in realtime>=2 which requires websockets>=13,
+# conflicting with gradio-client's websockets<13 requirement.
+supabase==2.3.5
+realtime==1.0.6

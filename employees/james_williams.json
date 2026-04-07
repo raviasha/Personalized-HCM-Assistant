@@ -1,0 +1,31 @@
+{
+  "name": "James Williams",
+  "employee_id": "EMP-1002",
+  "department": "Operations",
+  "hire_date": "2018-03-20",
+  "age": 42,
+  "family_status": "married_with_dependents",
+  "enrolled_benefits": {
+    "health_plan": "Premium Family",
+    "retirement_401k_contribution_pct": 6,
+    "fsa_election": "healthcare_fsa",
+    "hsa_election": null
+  },
+  "interests": [
+    {"text": "Optimizing tax-advantaged accounts", "added_session": 1, "last_referenced_session": 1}
+  ],
+  "unresolved_questions": [
+    {"text": "What is the difference between FSA and HSA?", "added_session": 1, "last_referenced_session": 1}
+  ],
+  "pending_actions": [],
+  "interaction_history": [
+    {
+      "session": 1,
+      "summary": "James asked about the differences between FSA and HSA, and whether he can switch from his current Healthcare FSA to an HSA. He is concerned about maximizing tax savings for his family."
+    }
+  ],
+  "historical_summary": "",
+  "seen_recommendations": [],
+  "session_counter": 1,
+  "last_interaction_timestamp": "2026-03-15T10:30:00Z"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Priya Sharma",
+  "employee_id": "EMP-1003",
+  "department": "Finance",
+  "hire_date": "2011-06-01",
+  "age": 55,
+  "family_status": "married",
+  "enrolled_benefits": {
+    "health_plan": "Premium Individual Plus Spouse",
+    "retirement_401k_contribution_pct": 23,
+    "fsa_election": null,
+    "hsa_election": "hsa_family"
+  },
+  "interests": [
+    {"text": "Catch-up contributions", "added_session": 1, "last_referenced_session": 2},
+    {"text": "Medicare transition planning", "added_session": 1, "last_referenced_session": 2}
+  ],
+  "unresolved_questions": [],
+  "pending_actions": [
+    {"text": "Review catch-up contribution limits for 2026", "added_session": 2, "last_referenced_session": 2}
+  ],
+  "interaction_history": [
+    {
+      "session": 1,
+      "summary": "Priya asked about 401k catch-up contribution rules for employees over 50. She confirmed she is already contributing the standard maximum and wants to add catch-up contributions."
+    },
+    {
+      "session": 2,
+      "summary": "Priya asked about Medicare eligibility at 65 and how it interacts with her current Premium health plan and HSA. She noted she wants to plan the transition well in advance."
+    }
+  ],
+  "historical_summary": "",
+  "seen_recommendations": [],
+  "session_counter": 2,
+  "last_interaction_timestamp": "2026-03-28T14:00:00Z"
+}
