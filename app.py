@@ -138,6 +138,57 @@ with gr.Blocks(
     gr.Markdown("# 🏢 Acme Corp Benefits Assistant")
     gr.Markdown("Personalized benefits guidance powered by AI. Select your employee profile to begin.")
 
+    with gr.Accordion("📖 User Guide", open=False):
+        gr.Markdown("""
+## How to use this app
+
+This is a prototype **personalized benefits chatbot** for Acme Corp employees.
+It demonstrates how an AI assistant can give context-aware benefits guidance
+based on each employee's profile, enrollment status, and conversation history.
+
+---
+
+### Getting started
+
+1. **Select an employee** from the dropdown at the top-left.
+   - The assistant will greet you with a proactive recommendation tailored to that employee's situation.
+   - Three synthetic personas are available: Maria Chen, James Williams, and Priya Sharma — each with different tenure, family status, and enrollment.
+
+2. **Ask a question** by typing in the message box and pressing **Send** (or Enter).
+   - Example questions: *"What is the 401k match?"*, *"Can I use my HSA for dental expenses?"*, *"How much PTO do I accrue?"*
+   - Or click any **Browse Topics** button on the right to pre-fill a starter question.
+
+3. **End the session** by clicking **End Chat & Save**.
+   - The assistant analyzes the conversation and updates the employee's memory:
+     saves new interests, records unresolved questions, marks resolved ones as done, and logs action items.
+   - The **What I Know About You** panel (right sidebar) refreshes to show the updated state.
+
+---
+
+### The three employee personas
+
+| Employee | Age | Situation | Key interests |
+|---|---|---|---|
+| **Maria Chen** | 28 | New hire (3 months), single | 401k match, tuition reimbursement |
+| **James Williams** | 42 | 8 years, married + 2 kids | FSA vs HSA, tax-advantaged accounts |
+| **Priya Sharma** | 55 | 15 years, married, VP Finance | Catch-up contributions, Medicare transition |
+
+---
+
+### What the sidebar panels do
+
+- **Browse Topics** — quick-access buttons that pre-fill a relevant starter question for any benefits area.
+- **What I Know About You** — shows the employee's live state JSON (interests, unresolved questions, pending actions, interaction history). This is for prototype evaluation only — it would not be visible to employees in production.
+
+---
+
+### Tips
+
+- Try selecting the **same employee across multiple sessions** to see memory build up over time.
+- Ask about a topic, end the chat, reselect the same employee — notice their interests and history have been updated.
+- The assistant will **not repeat recommendations** it has already surfaced (tracked via `seen_recommendations`).
+""")
+
     with gr.Row():
         with gr.Column(scale=3):
             employee_dropdown = gr.Dropdown(
