@@ -1,3 +1,23 @@
+# ---------------------------------------------------------------------------
+# Monkey-patch gradio_client bool-schema bug bundled with gradio==4.44.1.
+# The same fix is applied via setup.sh locally; here we patch at runtime so
+# HF Spaces (where we can't edit installed packages) works without changes.
+# Must happen BEFORE `import gradio`.
+# ---------------------------------------------------------------------------
+import gradio_client.utils as _gc_utils
+
+_orig_get_type = _gc_utils.get_type
+
+
+def _patched_get_type(schema):
+    if isinstance(schema, bool):
+        return "any"
+    return _orig_get_type(schema)
+
+
+_gc_utils.get_type = _patched_get_type
+# ---------------------------------------------------------------------------
+
 import gradio as gr
 import json
 from pathlib import Path
