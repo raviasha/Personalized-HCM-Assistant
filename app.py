@@ -6,6 +6,7 @@
 # ---------------------------------------------------------------------------
 import gradio_client.utils as _gc_utils
 
+# Patch get_type: handle bool schemas (e.g. additionalProperties: true/false)
 _orig_get_type = _gc_utils.get_type
 
 
@@ -16,6 +17,19 @@ def _patched_get_type(schema):
 
 
 _gc_utils.get_type = _patched_get_type
+
+# Patch _json_schema_to_python_type: also guard at the recursive entry point
+# so bool schemas passed as additionalProperties/items never reach get_type unchecked.
+_orig_j2p = _gc_utils._json_schema_to_python_type
+
+
+def _patched_j2p(schema, defs=None):
+    if isinstance(schema, bool):
+        return "Any"
+    return _orig_j2p(schema, defs)
+
+
+_gc_utils._json_schema_to_python_type = _patched_j2p
 # ---------------------------------------------------------------------------
 
 import gradio as gr
@@ -207,4 +221,10 @@ with gr.Blocks(
 
 
 if __name__ == "__main__":
-    app.launch(server_name="0.0.0.0", server_port=7860, allowed_paths=[str(_CORPUS_DIR)])
+    # HF Spaces exposes port 7860 on 0.0.0.0; do NOT pass server_name/server_port
+    # when running there — Spaces sets SPACE_ID env var.
+    import os as _os
+    if _os.environ.get("SPACE_ID"):
+        app.launch(allowed_paths=[str(_CORPUS_DIR)])
+    else:
+        app.launch(server_name="0.0.0.0", server_port=7860, allowed_paths=[str(_CORPUS_DIR)])
