@@ -131,12 +131,81 @@ with gr.Blocks(
             position: sticky !important;
             top: 1rem;
         }
+        .feature-card {
+            border-left: 4px solid #6366f1;
+            padding: 0.6rem 1rem;
+            margin-bottom: 0.5rem;
+            background: #f8f7ff;
+            border-radius: 0 8px 8px 0;
+        }
+        .features-header {
+            text-align: center;
+            padding: 1rem 0 0.5rem 0;
+        }
     """,
 ) as app:
     employee_state = gr.State(value={})
 
     gr.Markdown("# 🏢 Acme Corp Benefits Assistant")
     gr.Markdown("Personalized benefits guidance powered by AI. Select your employee profile to begin.")
+
+    with gr.Accordion("✨ What Makes This Assistant Different", open=True):
+        gr.Markdown("""
+<div class="features-header">
+
+### 🧠 Built Different — Not Just a Chatbot
+
+</div>
+
+<div class="feature-card">
+
+**🗂️ Living Memory Per Employee**
+Each employee has a persistent profile that remembers their enrolled benefits, past questions, interests, and action items — across every session. The assistant knows who you are before you say a word.
+
+</div>
+
+<div class="feature-card">
+
+**🎯 Proactive AI — It Speaks First**
+On login, the assistant doesn't wait. It analyzes your profile against the benefits corpus and opens with a personalized recommendation for something you haven't explored yet — surfaced automatically, never repeated.
+
+</div>
+
+<div class="feature-card">
+
+**🔄 Bidirectional Memory Updates**
+After every conversation, the assistant doesn't just add — it *cleans up*. Resolved questions are removed, abandoned action items are cleared, and new interests are recorded. Your profile stays accurate, not bloated.
+
+</div>
+
+<div class="feature-card">
+
+**📚 Self-Expanding Knowledge Categories**
+The Browse Topics panel is dynamically generated from whatever documents are loaded in the corpus. Add a new benefits policy document and a new topic button appears automatically — no code changes needed.
+
+</div>
+
+<div class="feature-card">
+
+**🔍 Cited Answers — Full Observability**
+Every response is grounded in specific corpus documents. Sources are cited inline so you always know *which policy document* the answer came from — no black-box hallucinations.
+
+</div>
+
+<div class="feature-card">
+
+**📝 Conversation Summaries That Compound**
+Every session is summarized and stored in the employee's memory. Older summaries are automatically compressed into a rolling historical summary — so context from months ago still shapes today's conversation, within a strict token budget.
+
+</div>
+
+<div class="feature-card">
+
+**⚡ Smart State Compaction**
+Employee memory is kept lean automatically: stale questions expire after 3 sessions of inactivity, old history is compressed by GPT-4o, and a hard 1500-token budget ensures fast, cost-efficient responses no matter how long an employee has been using the system.
+
+</div>
+""")
 
     with gr.Accordion("📖 User Guide", open=False):
         gr.Markdown("""
